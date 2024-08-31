@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Init commit">
-      <change afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sameButWithChallenges/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Initial commit: Setup basic structure of the Lox interpreter.&#10;&#10;- Created the `Lox` class in `lox/Lox.java`.&#10;- Implemented basic command-line interface with two modes: file execution and interactive prompt (REPL).&#10;- Added core methods:&#10;  - `runFile(String path)` to read and execute a file.&#10;  - `runPrompt()` for interactive execution.&#10;  - `run(String source)` to scan and print tokens.&#10;- Introduced basic error handling with `error(int line, String message)` and `report(int line, String where, String message)`.&#10;- Added `hadError` flag to manage error state and ensure proper exit codes.">
+      <change afterPath="$PROJECT_DIR$/src/lox/Token.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lox/TokenType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -87,11 +87,20 @@
       <option name="project" value="LOCAL" />
       <updated>1724697071200</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit: Setup basic structure of the Lox interpreter.&#10;&#10;- Created the `Lox` class in `lox/Lox.java`.&#10;- Implemented basic command-line interface with two modes: file execution and interactive prompt (REPL).&#10;- Added core methods:&#10;  - `runFile(String path)` to read and execute a file.&#10;  - `runPrompt()` for interactive execution.&#10;  - `run(String source)` to scan and print tokens.&#10;- Introduced basic error handling with `error(int line, String message)` and `report(int line, String where, String message)`.&#10;- Added `hadError` flag to manage error state and ensure proper exit codes.">
+      <option name="closed" value="true" />
+      <created>1725114280270</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725114280270</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init commit" />
+    <MESSAGE value="Initial commit: Setup basic structure of the Lox interpreter.&#10;&#10;- Created the `Lox` class in `lox/Lox.java`.&#10;- Implemented basic command-line interface with two modes: file execution and interactive prompt (REPL).&#10;- Added core methods:&#10;  - `runFile(String path)` to read and execute a file.&#10;  - `runPrompt()` for interactive execution.&#10;  - `run(String source)` to scan and print tokens.&#10;- Introduced basic error handling with `error(int line, String message)` and `report(int line, String where, String message)`.&#10;- Added `hadError` flag to manage error state and ensure proper exit codes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit: Setup basic structure of the Lox interpreter.&#10;&#10;- Created the `Lox` class in `lox/Lox.java`.&#10;- Implemented basic command-line interface with two modes: file execution and interactive prompt (REPL).&#10;- Added core methods:&#10;  - `runFile(String path)` to read and execute a file.&#10;  - `runPrompt()` for interactive execution.&#10;  - `run(String source)` to scan and print tokens.&#10;- Introduced basic error handling with `error(int line, String message)` and `report(int line, String where, String message)`.&#10;- Added `hadError` flag to manage error state and ensure proper exit codes." />
   </component>
 </project>
