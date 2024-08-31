@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Add token type definitions and token structure.&#10;&#10;- Created `TokenType.java` to define all possible types of tokens in the Lox language, including single-character tokens, multi-character tokens, literals, keywords, and EOF.&#10;- Added `Token.java` to encapsulate token data, including type, lexeme, literal value, and line number.&#10;- Implemented `toString()` method in `Token` class for easy representation of tokens during debugging and development.">
-      <change afterPath="$PROJECT_DIR$/src/lox/Scanner.java" afterDir="false" />
+    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Implement basic token scanning logic for single-character lexemes.&#10;&#10;- Created `Scanner.java` to handle the tokenization process of the Lox source code.&#10;- Implemented the `scanTokens()` method to loop through the source code, identifying lexemes and generating corresponding tokens.&#10;- Added fields `start`, `current`, and `line` to track the scanner's position in the source code.&#10;- Introduced `isAtEnd()` helper method to check if the scanner has reached the end of the source.&#10;- Implemented `scanToken()` to handle single-character tokens such as parentheses, braces, commas, and operators.&#10;- Added `advance()` and `addToken()` helper methods for consuming characters and generating tokens.&#10;- Implemented basic lexical error handling by reporting unexpected characters during scanning.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Scanner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,13 +101,22 @@
       <option name="project" value="LOCAL" />
       <updated>1725114938252</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implement basic token scanning logic for single-character lexemes.&#10;&#10;- Created `Scanner.java` to handle the tokenization process of the Lox source code.&#10;- Implemented the `scanTokens()` method to loop through the source code, identifying lexemes and generating corresponding tokens.&#10;- Added fields `start`, `current`, and `line` to track the scanner's position in the source code.&#10;- Introduced `isAtEnd()` helper method to check if the scanner has reached the end of the source.&#10;- Implemented `scanToken()` to handle single-character tokens such as parentheses, braces, commas, and operators.&#10;- Added `advance()` and `addToken()` helper methods for consuming characters and generating tokens.&#10;- Implemented basic lexical error handling by reporting unexpected characters during scanning.">
+      <option name="closed" value="true" />
+      <created>1725125543221</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725125543221</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init commit" />
     <MESSAGE value="Initial commit: Setup basic structure of the Lox interpreter.&#10;&#10;- Created the `Lox` class in `lox/Lox.java`.&#10;- Implemented basic command-line interface with two modes: file execution and interactive prompt (REPL).&#10;- Added core methods:&#10;  - `runFile(String path)` to read and execute a file.&#10;  - `runPrompt()` for interactive execution.&#10;  - `run(String source)` to scan and print tokens.&#10;- Introduced basic error handling with `error(int line, String message)` and `report(int line, String where, String message)`.&#10;- Added `hadError` flag to manage error state and ensure proper exit codes." />
     <MESSAGE value="Add token type definitions and token structure.&#10;&#10;- Created `TokenType.java` to define all possible types of tokens in the Lox language, including single-character tokens, multi-character tokens, literals, keywords, and EOF.&#10;- Added `Token.java` to encapsulate token data, including type, lexeme, literal value, and line number.&#10;- Implemented `toString()` method in `Token` class for easy representation of tokens during debugging and development." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add token type definitions and token structure.&#10;&#10;- Created `TokenType.java` to define all possible types of tokens in the Lox language, including single-character tokens, multi-character tokens, literals, keywords, and EOF.&#10;- Added `Token.java` to encapsulate token data, including type, lexeme, literal value, and line number.&#10;- Implemented `toString()` method in `Token` class for easy representation of tokens during debugging and development." />
+    <MESSAGE value="Implement basic token scanning logic for single-character lexemes.&#10;&#10;- Created `Scanner.java` to handle the tokenization process of the Lox source code.&#10;- Implemented the `scanTokens()` method to loop through the source code, identifying lexemes and generating corresponding tokens.&#10;- Added fields `start`, `current`, and `line` to track the scanner's position in the source code.&#10;- Introduced `isAtEnd()` helper method to check if the scanner has reached the end of the source.&#10;- Implemented `scanToken()` to handle single-character tokens such as parentheses, braces, commas, and operators.&#10;- Added `advance()` and `addToken()` helper methods for consuming characters and generating tokens.&#10;- Implemented basic lexical error handling by reporting unexpected characters during scanning." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement basic token scanning logic for single-character lexemes.&#10;&#10;- Created `Scanner.java` to handle the tokenization process of the Lox source code.&#10;- Implemented the `scanTokens()` method to loop through the source code, identifying lexemes and generating corresponding tokens.&#10;- Added fields `start`, `current`, and `line` to track the scanner's position in the source code.&#10;- Introduced `isAtEnd()` helper method to check if the scanner has reached the end of the source.&#10;- Implemented `scanToken()` to handle single-character tokens such as parentheses, braces, commas, and operators.&#10;- Added `advance()` and `addToken()` helper methods for consuming characters and generating tokens.&#10;- Implemented basic lexical error handling by reporting unexpected characters during scanning." />
   </component>
 </project>
