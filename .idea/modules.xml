@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Lox Interpteter.iml" filepath="$PROJECT_DIR$/Lox Interpteter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LoxInterpteter.iml" filepath="$PROJECT_DIR$/LoxInterpteter.iml" />
     </modules>
   </component>
 </project>
