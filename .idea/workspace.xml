@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Enhance Scanner to support string literals, numbers, and identifiers.&#10;&#10;- Added a static `keywords` map to store reserved keywords and their corresponding token types.&#10;- Enhanced `scanToken()` to recognize string literals, numeric literals, and identifiers.&#10;- Implemented `string()` method to handle string literal tokens, including error reporting for unterminated strings.&#10;- Implemented `number()` method to tokenize numeric literals, supporting both integers and floating-point numbers.&#10;- Implemented `identifier()` method to handle identifiers and keywords, utilizing the `keywords` map for keyword recognition.&#10;- Added utility methods `isDigit()`, `isAlpha()`, and `isAlphaNumeric()` for character type checks.&#10;- Improved multi-character operator detection by fixing the match for `GREATER` token.">
+      <change afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,23 +41,40 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2lCvFduoAb2OjPIkeFMkgOLh4zD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Lox.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/HYPERPC/Documents/Programming/Java/Lox-Interpreter/Lox Interpteter/src/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GenerateAst.executor": "Run",
+    "Application.Lox.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/HYPERPC/Documents/Programming/Java/Lox-Interpreter/Lox Interpteter/src/Main.java",
+    "settings.editor.selected.configurable": "preferences.updates"
   }
-}</component>
-  <component name="RunManager" selected="Application.Lox">
+}]]></component>
+  <component name="RunManager" selected="Application.GenerateAst">
+    <configuration name="GenerateAst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tool.GenerateAst" />
+      <module name="LoxInterpteter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tool.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lox.Lox" />
       <module name="LoxInterpteter" />
@@ -79,6 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GenerateAst" />
         <item itemvalue="Application.Lox" />
         <item itemvalue="Application.Main" />
       </list>
@@ -145,6 +164,7 @@
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Init commit" />
     <MESSAGE value="Initial commit: Setup basic structure of the Lox interpreter.&#10;&#10;- Created the `Lox` class in `lox/Lox.java`.&#10;- Implemented basic command-line interface with two modes: file execution and interactive prompt (REPL).&#10;- Added core methods:&#10;  - `runFile(String path)` to read and execute a file.&#10;  - `runPrompt()` for interactive execution.&#10;  - `run(String source)` to scan and print tokens.&#10;- Introduced basic error handling with `error(int line, String message)` and `report(int line, String where, String message)`.&#10;- Added `hadError` flag to manage error state and ensure proper exit codes." />
     <MESSAGE value="Add token type definitions and token structure.&#10;&#10;- Created `TokenType.java` to define all possible types of tokens in the Lox language, including single-character tokens, multi-character tokens, literals, keywords, and EOF.&#10;- Added `Token.java` to encapsulate token data, including type, lexeme, literal value, and line number.&#10;- Implemented `toString()` method in `Token` class for easy representation of tokens during debugging and development." />
