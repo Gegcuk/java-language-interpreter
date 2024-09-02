@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Implement Visitor pattern in Expr classes and update GenerateAst tool.&#10;&#10;- Refactored `Expr` class hierarchy to support the Visitor pattern:&#10;  - Added `Visitor&lt;R&gt;` interface within `Expr` with visit methods for each expression type: `Binary`, `Grouping`, `Literal`, and `Unary`.&#10;  - Each expression class (`Binary`, `Grouping`, `Literal`, and `Unary`) now implements the `accept(Visitor&lt;R&gt; visitor)` method to handle visitor operations.&#10;&#10;- Updated `GenerateAst` tool to automatically generate the `Visitor` interface and `accept` methods:&#10;  - The tool now generates the `Visitor&lt;R&gt;` interface with visit methods for each expression type.&#10;  - The `accept(Visitor&lt;R&gt; visitor)` method is added to each generated expression class, ensuring consistency with the Visitor pattern.&#10;&#10;- Added missing semicolon in the generated import statement of `Expr.java` and included additional spacing for better code readability.">
-      <change afterPath="$PROJECT_DIR$/src/lox/AstPrinter.java" afterDir="false" />
+    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Implement AstPrinter for pretty-printing expressions.&#10;&#10;- Created `AstPrinter` class implementing the `Expr.Visitor&lt;String&gt;` interface to traverse and print the abstract syntax tree (AST) in a readable format.&#10;  - Added `print(Expr expr)` method to initiate the visitor pattern and return a string representation of the expression.&#10;  - Implemented `visitBinaryExpr`, `visitGroupingExpr`, `visitLiteralExpr`, and `visitUnaryExpr` methods to handle printing of different expression types.&#10;  - Developed `parenthesize(String name, Expr... exprs)` helper method to format expressions with parentheses, making the output clear and structured.&#10;&#10;- Added a `main` method to demonstrate the `AstPrinter` by constructing a sample expression and printing its AST representation.&#10;&#10;- The `AstPrinter` class provides a way to visualize the structure of expressions in the Lox language, aiding in debugging and understanding the interpreter's processing of code.">
+      <change afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,7 @@
     "settings.editor.selected.configurable": "preferences.updates"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.AstPrinter">
+  <component name="RunManager" selected="Application.Lox">
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lox.AstPrinter" />
       <module name="LoxInterpteter" />
@@ -110,9 +111,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Lox" />
         <item itemvalue="Application.AstPrinter" />
         <item itemvalue="Application.GenerateAst" />
-        <item itemvalue="Application.Lox" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -198,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725277720447</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implement AstPrinter for pretty-printing expressions.&#10;&#10;- Created `AstPrinter` class implementing the `Expr.Visitor&lt;String&gt;` interface to traverse and print the abstract syntax tree (AST) in a readable format.&#10;  - Added `print(Expr expr)` method to initiate the visitor pattern and return a string representation of the expression.&#10;  - Implemented `visitBinaryExpr`, `visitGroupingExpr`, `visitLiteralExpr`, and `visitUnaryExpr` methods to handle printing of different expression types.&#10;  - Developed `parenthesize(String name, Expr... exprs)` helper method to format expressions with parentheses, making the output clear and structured.&#10;&#10;- Added a `main` method to demonstrate the `AstPrinter` by constructing a sample expression and printing its AST representation.&#10;&#10;- The `AstPrinter` class provides a way to visualize the structure of expressions in the Lox language, aiding in debugging and understanding the interpreter's processing of code.">
+      <option name="closed" value="true" />
+      <created>1725278544519</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725278544519</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -211,6 +220,7 @@
     <MESSAGE value="Enhance Scanner to support string literals, numbers, and identifiers.&#10;&#10;- Added a static `keywords` map to store reserved keywords and their corresponding token types.&#10;- Enhanced `scanToken()` to recognize string literals, numeric literals, and identifiers.&#10;- Implemented `string()` method to handle string literal tokens, including error reporting for unterminated strings.&#10;- Implemented `number()` method to tokenize numeric literals, supporting both integers and floating-point numbers.&#10;- Implemented `identifier()` method to handle identifiers and keywords, utilizing the `keywords` map for keyword recognition.&#10;- Added utility methods `isDigit()`, `isAlpha()`, and `isAlphaNumeric()` for character type checks.&#10;- Improved multi-character operator detection by fixing the match for `GREATER` token." />
     <MESSAGE value="xml updated" />
     <MESSAGE value="Implement Visitor pattern in Expr classes and update GenerateAst tool.&#10;&#10;- Refactored `Expr` class hierarchy to support the Visitor pattern:&#10;  - Added `Visitor&lt;R&gt;` interface within `Expr` with visit methods for each expression type: `Binary`, `Grouping`, `Literal`, and `Unary`.&#10;  - Each expression class (`Binary`, `Grouping`, `Literal`, and `Unary`) now implements the `accept(Visitor&lt;R&gt; visitor)` method to handle visitor operations.&#10;&#10;- Updated `GenerateAst` tool to automatically generate the `Visitor` interface and `accept` methods:&#10;  - The tool now generates the `Visitor&lt;R&gt;` interface with visit methods for each expression type.&#10;  - The `accept(Visitor&lt;R&gt; visitor)` method is added to each generated expression class, ensuring consistency with the Visitor pattern.&#10;&#10;- Added missing semicolon in the generated import statement of `Expr.java` and included additional spacing for better code readability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement Visitor pattern in Expr classes and update GenerateAst tool.&#10;&#10;- Refactored `Expr` class hierarchy to support the Visitor pattern:&#10;  - Added `Visitor&lt;R&gt;` interface within `Expr` with visit methods for each expression type: `Binary`, `Grouping`, `Literal`, and `Unary`.&#10;  - Each expression class (`Binary`, `Grouping`, `Literal`, and `Unary`) now implements the `accept(Visitor&lt;R&gt; visitor)` method to handle visitor operations.&#10;&#10;- Updated `GenerateAst` tool to automatically generate the `Visitor` interface and `accept` methods:&#10;  - The tool now generates the `Visitor&lt;R&gt;` interface with visit methods for each expression type.&#10;  - The `accept(Visitor&lt;R&gt; visitor)` method is added to each generated expression class, ensuring consistency with the Visitor pattern.&#10;&#10;- Added missing semicolon in the generated import statement of `Expr.java` and included additional spacing for better code readability." />
+    <MESSAGE value="Implement AstPrinter for pretty-printing expressions.&#10;&#10;- Created `AstPrinter` class implementing the `Expr.Visitor&lt;String&gt;` interface to traverse and print the abstract syntax tree (AST) in a readable format.&#10;  - Added `print(Expr expr)` method to initiate the visitor pattern and return a string representation of the expression.&#10;  - Implemented `visitBinaryExpr`, `visitGroupingExpr`, `visitLiteralExpr`, and `visitUnaryExpr` methods to handle printing of different expression types.&#10;  - Developed `parenthesize(String name, Expr... exprs)` helper method to format expressions with parentheses, making the output clear and structured.&#10;&#10;- Added a `main` method to demonstrate the `AstPrinter` by constructing a sample expression and printing its AST representation.&#10;&#10;- The `AstPrinter` class provides a way to visualize the structure of expressions in the Lox language, aiding in debugging and understanding the interpreter's processing of code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement AstPrinter for pretty-printing expressions.&#10;&#10;- Created `AstPrinter` class implementing the `Expr.Visitor&lt;String&gt;` interface to traverse and print the abstract syntax tree (AST) in a readable format.&#10;  - Added `print(Expr expr)` method to initiate the visitor pattern and return a string representation of the expression.&#10;  - Implemented `visitBinaryExpr`, `visitGroupingExpr`, `visitLiteralExpr`, and `visitUnaryExpr` methods to handle printing of different expression types.&#10;  - Developed `parenthesize(String name, Expr... exprs)` helper method to format expressions with parentheses, making the output clear and structured.&#10;&#10;- Added a `main` method to demonstrate the `AstPrinter` by constructing a sample expression and printing its AST representation.&#10;&#10;- The `AstPrinter` class provides a way to visualize the structure of expressions in the Lox language, aiding in debugging and understanding the interpreter's processing of code." />
   </component>
 </project>
