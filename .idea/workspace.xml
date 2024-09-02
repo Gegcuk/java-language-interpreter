@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Enhance Scanner to support string literals, numbers, and identifiers.&#10;&#10;- Added a static `keywords` map to store reserved keywords and their corresponding token types.&#10;- Enhanced `scanToken()` to recognize string literals, numeric literals, and identifiers.&#10;- Implemented `string()` method to handle string literal tokens, including error reporting for unterminated strings.&#10;- Implemented `number()` method to tokenize numeric literals, supporting both integers and floating-point numbers.&#10;- Implemented `identifier()` method to handle identifiers and keywords, utilizing the `keywords` map for keyword recognition.&#10;- Added utility methods `isDigit()`, `isAlpha()`, and `isAlphaNumeric()` for character type checks.&#10;- Improved multi-character operator detection by fixing the match for `GREATER` token." />
+    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="xml updated">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725221721929</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="xml updated">
+      <option name="closed" value="true" />
+      <created>1725227207999</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725227207999</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +187,7 @@
     <MESSAGE value="Implement basic token scanning logic for single-character lexemes.&#10;&#10;- Created `Scanner.java` to handle the tokenization process of the Lox source code.&#10;- Implemented the `scanTokens()` method to loop through the source code, identifying lexemes and generating corresponding tokens.&#10;- Added fields `start`, `current`, and `line` to track the scanner's position in the source code.&#10;- Introduced `isAtEnd()` helper method to check if the scanner has reached the end of the source.&#10;- Implemented `scanToken()` to handle single-character tokens such as parentheses, braces, commas, and operators.&#10;- Added `advance()` and `addToken()` helper methods for consuming characters and generating tokens.&#10;- Implemented basic lexical error handling by reporting unexpected characters during scanning." />
     <MESSAGE value="Enhance scanner to handle multi-character operators, comments, and whitespace.&#10;&#10;- Updated `scanToken()` method to support multi-character operators (`!=`, `==`, `&lt;=`, `&gt;=`).&#10;- Added support for single-line comments that start with `//`, ignoring characters until the end of the line.&#10;- Enhanced handling of whitespace and line breaks: space, carriage return, and tab characters are ignored, while newline characters increment the line count.&#10;- Introduced `match(char expected)` method to check for expected characters following the current one, used for detecting multi-character operators.&#10;- Added `peek()` method to look at the next character without consuming it, aiding in comment handling and future lexeme checks.&#10;- Improved error reporting for unexpected characters encountered during scanning." />
     <MESSAGE value="Enhance Scanner to support string literals, numbers, and identifiers.&#10;&#10;- Added a static `keywords` map to store reserved keywords and their corresponding token types.&#10;- Enhanced `scanToken()` to recognize string literals, numeric literals, and identifiers.&#10;- Implemented `string()` method to handle string literal tokens, including error reporting for unterminated strings.&#10;- Implemented `number()` method to tokenize numeric literals, supporting both integers and floating-point numbers.&#10;- Implemented `identifier()` method to handle identifiers and keywords, utilizing the `keywords` map for keyword recognition.&#10;- Added utility methods `isDigit()`, `isAlpha()`, and `isAlphaNumeric()` for character type checks.&#10;- Improved multi-character operator detection by fixing the match for `GREATER` token." />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance Scanner to support string literals, numbers, and identifiers.&#10;&#10;- Added a static `keywords` map to store reserved keywords and their corresponding token types.&#10;- Enhanced `scanToken()` to recognize string literals, numeric literals, and identifiers.&#10;- Implemented `string()` method to handle string literal tokens, including error reporting for unterminated strings.&#10;- Implemented `number()` method to tokenize numeric literals, supporting both integers and floating-point numbers.&#10;- Implemented `identifier()` method to handle identifiers and keywords, utilizing the `keywords` map for keyword recognition.&#10;- Added utility methods `isDigit()`, `isAlpha()`, and `isAlphaNumeric()` for character type checks.&#10;- Improved multi-character operator detection by fixing the match for `GREATER` token." />
+    <MESSAGE value="xml updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml updated" />
   </component>
 </project>
