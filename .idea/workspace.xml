@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Add runtime error handling and integrate Interpreter with Lox&#10;&#10;- Enforce numeric operands for arithmetic and comparison operators.&#10;- Handle invalid operand types for the `PLUS` operator.&#10;- Introduce `RuntimeError` for detailed error reporting.&#10;- Modify `Lox` to track and handle runtime errors during interpretation.">
-      <change afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
+    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution.">
+      <change afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/GenerateAst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Stmt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +28,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -234,8 +236,27 @@
       <option name="project" value="LOCAL" />
       <updated>1725386140718</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution.">
+      <option name="closed" value="true" />
+      <created>1725453916006</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1725453916006</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -251,6 +272,7 @@
     <MESSAGE value="Add Parser to Lox interpreter for parsing expressions and integrate with AstPrinter.&#10;&#10;- **Lox.java:**&#10;  - Enhanced the `run(String source)` method to include parsing of tokens into an abstract syntax tree (AST) using the newly added `Parser` class.&#10;  - Integrated `AstPrinter` to pretty-print the parsed expressions after they are successfully parsed.&#10;  - Added a second `error(Token token, String message)` method for error handling that reports errors with specific tokens.&#10;  &#10;- **Parser.java:**&#10;  - Implemented a `Parser` class that constructs an AST from a list of tokens.&#10;  - Added methods for parsing different levels of expression precedence:&#10;    - `expression()` handles the top level parsing.&#10;    - `equality()`, `comparison()`, `term()`, `factor()`, and `unary()` handle different operator precedences.&#10;    - `primary()` handles literals and grouping.&#10;  - Implemented error handling with a `ParseError` exception to manage parsing errors gracefully.&#10;  - Added `synchronize()` method to recover from errors by discarding tokens until a statement boundary is reached.&#10;&#10;- **General:**&#10;  - The Parser is now fully integrated with the Lox interpreter, enabling the interpretation of expressions according to the Lox language grammar.&#10;  - The implementation includes basic error recovery to ensure the interpreter can continue processing after encountering errors." />
     <MESSAGE value="Implement Interpreter for evaluating expressions in Lox.&#10;&#10;- Added `Interpreter` class to evaluate expressions using the Visitor pattern:&#10;  - Implemented `visitBinaryExpr` to handle binary operations such as arithmetic, comparison, and equality.&#10;    - Supports numeric operations (`+`, `-`, `*`, `/`) and string concatenation with the `PLUS` operator.&#10;    - Handles comparison operators (`&gt;`, `&gt;=`, `&lt;`, `&lt;=`) and equality checks (`==`, `!=`).&#10;  - Implemented `visitGroupingExpr` to evaluate grouped expressions.&#10;  - Implemented `visitLiteralExpr` to return literal values directly.&#10;  - Implemented `visitUnaryExpr` to handle unary operations like negation and logical NOT.&#10;&#10;- Added utility methods to support expression evaluation:&#10;  - `isTruthy`: Determines the truthiness of an object according to Lox language rules.&#10;  - `isEqual`: Compares two objects for equality, including handling of `null` values.&#10;  - `evaluate`: Dispatches the expression to the appropriate visitor method for evaluation.&#10;&#10;- The `Interpreter` class serves as the evaluation engine for the Lox interpreter, converting parsed expressions into executable results." />
     <MESSAGE value="Add runtime error handling and integrate Interpreter with Lox&#10;&#10;- Enforce numeric operands for arithmetic and comparison operators.&#10;- Handle invalid operand types for the `PLUS` operator.&#10;- Introduce `RuntimeError` for detailed error reporting.&#10;- Modify `Lox` to track and handle runtime errors during interpretation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add runtime error handling and integrate Interpreter with Lox&#10;&#10;- Enforce numeric operands for arithmetic and comparison operators.&#10;- Handle invalid operand types for the `PLUS` operator.&#10;- Introduce `RuntimeError` for detailed error reporting.&#10;- Modify `Lox` to track and handle runtime errors during interpretation." />
+    <MESSAGE value="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution." />
+    <option name="LAST_COMMIT_MESSAGE" value="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution." />
   </component>
 </project>
