@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution.">
-      <change afterPath="$PROJECT_DIR$/src/lox/Environment.java" afterDir="false" />
+    <list default="true" id="20feece5-5989-4b22-b912-2b3c8a76418c" name="Changes" comment="Implement variable scoping with Environment class and extend Interpreter for variable declarations and assignments&#10;&#10;- Added `Environment` class to handle variable scoping and lookup, supporting nested environments.&#10;- Updated `Interpreter` to manage an environment stack, enabling block scoping and variable resolution.&#10;- Enhanced `Interpreter` to support variable declarations, assignments, and retrieval through the `visitVarStmt`, `visitAssignExpr`, and `visitVariableExpr` methods.&#10;- Implemented block execution with proper environment management to ensure correct variable scoping.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/AstPrinter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/Expr.java" afterDir="false" />
@@ -53,20 +52,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.AstPrinter.executor": "Run",
-    "Application.GenerateAst.executor": "Run",
-    "Application.Lox.executor": "Run",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/HYPERPC/Documents/Programming/Java/Lox-Interpreter/Lox Interpteter/src/Main.java",
-    "settings.editor.selected.configurable": "preferences.updates"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.AstPrinter.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GenerateAst.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lox.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/HYPERPC/Documents/Programming/Java/Lox-Interpreter/Lox Interpteter/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Lox">
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lox.AstPrinter" />
@@ -244,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725453916006</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Implement variable scoping with Environment class and extend Interpreter for variable declarations and assignments&#10;&#10;- Added `Environment` class to handle variable scoping and lookup, supporting nested environments.&#10;- Updated `Interpreter` to manage an environment stack, enabling block scoping and variable resolution.&#10;- Enhanced `Interpreter` to support variable declarations, assignments, and retrieval through the `visitVarStmt`, `visitAssignExpr`, and `visitVariableExpr` methods.&#10;- Implemented block execution with proper environment management to ensure correct variable scoping.">
+      <option name="closed" value="true" />
+      <created>1725480190115</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725480190115</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,6 +280,7 @@
     <MESSAGE value="Implement Interpreter for evaluating expressions in Lox.&#10;&#10;- Added `Interpreter` class to evaluate expressions using the Visitor pattern:&#10;  - Implemented `visitBinaryExpr` to handle binary operations such as arithmetic, comparison, and equality.&#10;    - Supports numeric operations (`+`, `-`, `*`, `/`) and string concatenation with the `PLUS` operator.&#10;    - Handles comparison operators (`&gt;`, `&gt;=`, `&lt;`, `&lt;=`) and equality checks (`==`, `!=`).&#10;  - Implemented `visitGroupingExpr` to evaluate grouped expressions.&#10;  - Implemented `visitLiteralExpr` to return literal values directly.&#10;  - Implemented `visitUnaryExpr` to handle unary operations like negation and logical NOT.&#10;&#10;- Added utility methods to support expression evaluation:&#10;  - `isTruthy`: Determines the truthiness of an object according to Lox language rules.&#10;  - `isEqual`: Compares two objects for equality, including handling of `null` values.&#10;  - `evaluate`: Dispatches the expression to the appropriate visitor method for evaluation.&#10;&#10;- The `Interpreter` class serves as the evaluation engine for the Lox interpreter, converting parsed expressions into executable results." />
     <MESSAGE value="Add runtime error handling and integrate Interpreter with Lox&#10;&#10;- Enforce numeric operands for arithmetic and comparison operators.&#10;- Handle invalid operand types for the `PLUS` operator.&#10;- Introduce `RuntimeError` for detailed error reporting.&#10;- Modify `Lox` to track and handle runtime errors during interpretation." />
     <MESSAGE value="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution." />
-    <option name="LAST_COMMIT_MESSAGE" value="Extend Interpreter to support statement execution&#10;&#10;- Implemented statement execution in the `Interpreter` class by adding support for `Stmt.Visitor&lt;Void&gt;`:&#10;  - Added `interpret(List&lt;Stmt&gt; statements)` method to execute a list of statements.&#10;  - Implemented `execute(Stmt statement)` to handle the execution of individual statements.&#10;&#10;- Expanded the visitor methods to handle new statement types:&#10;  - `visitExpressionStmt` evaluates an expression statement.&#10;  - `visitPrintStmt` evaluates and prints the result of an expression.&#10;&#10;- Retained existing functionality for evaluating expressions, including type checks and error handling for binary and unary expressions.&#10;&#10;- This update enables the interpreter to process and execute statements, paving the way for more complex program execution." />
+    <MESSAGE value="Implement variable scoping with Environment class and extend Interpreter for variable declarations and assignments&#10;&#10;- Added `Environment` class to handle variable scoping and lookup, supporting nested environments.&#10;- Updated `Interpreter` to manage an environment stack, enabling block scoping and variable resolution.&#10;- Enhanced `Interpreter` to support variable declarations, assignments, and retrieval through the `visitVarStmt`, `visitAssignExpr`, and `visitVariableExpr` methods.&#10;- Implemented block execution with proper environment management to ensure correct variable scoping." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement variable scoping with Environment class and extend Interpreter for variable declarations and assignments&#10;&#10;- Added `Environment` class to handle variable scoping and lookup, supporting nested environments.&#10;- Updated `Interpreter` to manage an environment stack, enabling block scoping and variable resolution.&#10;- Enhanced `Interpreter` to support variable declarations, assignments, and retrieval through the `visitVarStmt`, `visitAssignExpr`, and `visitVariableExpr` methods.&#10;- Implemented block execution with proper environment management to ensure correct variable scoping." />
   </component>
 </project>
